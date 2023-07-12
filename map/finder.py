@@ -9,7 +9,7 @@ for template_file in template_files:
     print (template_file)
     temp.append(template_file)
 
-print(temp[52])
+print(temp[51])
 upto1 = len(temp) - 1
 upto = 0
 
@@ -42,5 +42,5 @@ def choose_pixel(image_path):
     plt.show()
 
 # Example usage
-image_path = "map\map.jpg"
+image_path = "map\map.jpeg"
 choose_pixel(image_path)

@@ -126,14 +126,13 @@ def set_lines(last_dotx, last_doty, angle, targetx, targety, check, check_number
         start_point[1] + line_length * np.sin(angle_radians)
     )
 
-    plt.plot([start_point[0], end_point[0]], [start_point[1], end_point[1]], 'r-')
     plt.plot(start_point[0], start_point[1], 'bo')
     
     # Calculate the total distance between the starting and ending points
     total_distance = line_length#((end_point[0] - start_point[0]) ** 2 + ((end_point[1] - start_point[1]) ** 2) ** 0.5)
 
     # Plot the line
-    ax.plot([start_point[0], end_point[0]], [start_point[1], end_point[1]], 'r-')
+    #ax.plot([start_point[0], end_point[0]], [start_point[1], end_point[1]], 'r-')
 
     # Add dots every two units
     distance_between_dots = 20  # Set the distance between dots here
@@ -188,7 +187,6 @@ def set_lines(last_dotx, last_doty, angle, targetx, targety, check, check_number
         last_dotx.append(dot_x)
         last_doty.append(dot_y)
         # Plot the dot
-        ax.plot(dot_x, dot_y, 'ro')  # 'ro' represents red dots, you can modify it as needed
         
     if len(last_dotx) > 2:
         try:
@@ -203,11 +201,12 @@ def set_lines(last_dotx, last_doty, angle, targetx, targety, check, check_number
             for i in back_line_length_out:
                 if i < low:
                     low = i
-            print(low)
             if low == back_line_length:
+                ax.plot(last_dotx[len(last_dotx) - 2], last_doty[len(last_doty) - 2], 'bo')  # 'ro' represents red dots, you can modify it as needed
                 foundx = last_dotx[len(last_dotx) - 2]
                 foundy = last_doty[len(last_doty) - 2]
                 ax.plot([last_dotx[len(last_dotx) - 2], targetx], [last_doty[len(last_doty) - 2], targety], 'b-')
+                ax.plot([start_point[0], end_point[0]], [start_point[1], end_point[1]], 'r-')
             
             '''foundx = last_dotx[len(last_dotx) - 2]
             foundy = last_doty[len(last_doty) - 2]
